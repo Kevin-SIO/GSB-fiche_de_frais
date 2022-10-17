@@ -2,9 +2,7 @@ package com.gsb.fiche_de_frais.model;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 
 @Data
@@ -12,7 +10,7 @@ import java.sql.Date;
 public class Utilisateur {
 
     @Id
-    @Column(name = "id_role")
+    @Column(name = "id_utilisateur")
     private int id;
 
     private String nom;
@@ -24,5 +22,8 @@ public class Utilisateur {
     private String ville;
     @Column(name = "date_embauche")
     private Date dateEmbauche;
+    @ManyToOne
+    @JoinColumn(name = "id_role")
+    private Role role;
 
 }
